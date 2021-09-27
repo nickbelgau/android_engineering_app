@@ -1,0 +1,278 @@
+<MainScreen>:
+    GridLayout:
+        cols:1
+        RelativeLayout:
+            size_hint: 0.5, 0.5
+            padding: 30,30
+            spacing: 30,30
+            Label:
+                text: "Engineering Calculator"
+                font_size: '28sp'
+        GridLayout:
+            cols:1
+            padding: 10,10
+            spacing: 10,10
+            Button:
+                text: "Pressure to Head"
+                on_press: root.go_to_pressure_head()
+            Button:
+                text: "Horizontal Vessel Volume"
+                on_press: root.go_to_horizontal_volume()
+            Button:
+                text: "Vertical Vessel Volume"
+                on_press: root.go_to_vertical_volume()
+            Button:
+                text: "Spherical Vessel Volume"
+                on_press: root.go_to_sphere_volume()
+            Button:
+                text: "Other Conversions"
+
+<PressureHeadScreen>:
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:3
+            padding: 10,10
+            spacing: 10, 10
+            Button:
+                text: "Home"
+                on_press: root.go_to_home()
+            RelativeLayout:
+                size_hint: 3, 3
+                Label:
+                    text: "Pressure to Head Calculator"
+                    font_size: '28sp'
+            Label:
+                text: ""
+        RelativeLayout:
+            size_hint: 0.5, 0.5
+            Label:
+                text:"" #this is a spacer
+        GridLayout:
+            cols:2
+            Label:
+                text: "SG"
+            TextInput:
+                hint_text: "Input specific gravity"
+                id:sg
+            Label:
+                text: "Pressure (psig) or Head (ft)"
+            TextInput:
+                hint_text: "Input pressure or head"
+                id:pressurehead
+        GridLayout:
+            cols:2   
+            Button:
+                text: "Convert Pressure to Head"
+                on_press: root.convert_to_head(root.ids.sg.text, root.ids.pressurehead.text)
+            Button:
+                text: "Convert Head to Pressure"
+                on_press: root.convert_to_pressure(root.ids.sg.text, root.ids.pressurehead.text)
+        GridLayout:
+            cols:2     
+            Label:
+                id: p_h_output
+                text: ""
+            Label:
+                id: h_p_output
+                text: ""
+
+<HorizontalVolumeScreen>:
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:3
+            padding: 10,10
+            spacing: 10, 10
+            Button:
+                text: "Home"
+                on_press: root.go_to_home()
+            RelativeLayout:
+                size_hint: 3, 3
+                Label:
+                    text: "Horizontal Vessel Volume Calculator"
+                    font_size: '28sp'
+            Label:
+                text: ""
+        RelativeLayout:
+            size_hint: 0.5, 0.5
+            Label:
+                text:"" #this is a spacer
+        GridLayout:
+            cols:2
+            Label:
+                text: "Diameter (ft)"
+            TextInput:
+                id:D
+                hint_text:"Enter diameter (ft)"
+            Label:
+                text: "Tangent-Tangent Length (ft)"
+            TextInput:
+                id:L
+                hint_text:"Enter T-T length (ft)"
+            Label:
+                text: "Instrument x (in)"
+            TextInput:
+                id:x
+                hint_text:"Enter x (in)"
+            Label:
+                text: "Instrument y (in)"
+            TextInput:
+                id:y
+                hint_text:"Enter y (in)"
+            Label:
+                text: "Instrument liquid height (%)"
+            TextInput:
+                id:h
+                hint_text:"Enter liquid height (%)"
+
+        Button:
+            text: "Calculate"
+            on_press: root.horizontal(root.ids.x.text, root.ids.y.text, root.ids.h.text, root.ids.D.text, root.ids.L.text)
+        GridLayout:
+            cols:3
+            Label:
+                id: HorizontalVolume
+                text: ""
+            Label:
+                id: HorizontalTotalVolume
+                text: ""
+            Label:
+                id: HorizontalRemainingVolume
+                text: ""
+
+<VerticalVolumeScreen>:
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:3
+            padding: 10,10
+            spacing: 10, 10
+            Button:
+                text: "Home"
+                on_press: root.go_to_home()
+            RelativeLayout:
+                size_hint: 3, 3
+                Label:
+                    text: "Vertical Vessel Volume Calculator"
+                    font_size: '28sp'
+            Label:
+                text: ""
+        RelativeLayout:
+            size_hint: 0.5, 0.5
+            Label:
+                text:"" #this is a spacer
+        GridLayout:
+            cols:2
+            Label:
+                text: "Diameter (ft)"
+            TextInput:
+                id:D
+                hint_text:"Enter diameter (ft)"
+            Label:
+                text: "Tangent-Tangent Length (ft)"
+            TextInput:
+                id:L
+                hint_text:"Enter T-T length (ft)"
+            Label:
+                text: "Instrument x (in)"
+            TextInput:
+                id:x
+                hint_text:"Enter x (in)"
+            Label:
+                text: "Instrument y (in)"
+            TextInput:
+                id:y
+                hint_text:"Enter y (in)"
+            Label:
+                text: "Instrument liquid height (%)"
+            TextInput:
+                id:h
+                hint_text:"Enter liquid height (%)"
+
+        Button:
+            text: "Calculate"
+            on_press: root.vertical(root.ids.x.text, root.ids.y.text, root.ids.h.text, root.ids.D.text, root.ids.L.text)
+        GridLayout:
+            cols:3
+            Label:
+                id: VerticalVolume
+                text: ""
+            Label:
+                id: VerticalTotalVolume
+                text: ""
+            Label:
+                id: VerticalRemainingVolume
+                text: ""
+
+<SphereVolumeScreen>:
+    GridLayout:
+        cols:1
+        GridLayout:
+            cols:3
+            padding: 10,10
+            spacing: 10, 10
+            Button:
+                text: "Home"
+                on_press: root.go_to_home()
+            RelativeLayout:
+                size_hint: 3, 3
+                Label:
+                    text: "Spherical Vessel Volume Calculator"
+                    font_size: '28sp'
+            Label:
+                text: ""
+        RelativeLayout:
+            size_hint: 0.5, 0.5
+            Label:
+                text:"" #this is a spacer
+        GridLayout:
+            cols:2
+            Label:
+                text: "Diameter (ft)"
+            TextInput:
+                id:D
+                hint_text:"Enter diameter (ft)"
+            Label:
+                text: "Instrument x (in)"
+            TextInput:
+                id:x
+                hint_text:"Enter x (in)"
+            Label:
+                text: "Instrument y (in)"
+            TextInput:
+                id:y
+                hint_text:"Enter y (in)"
+            Label:
+                text: "Instrument liquid height (%)"
+            TextInput:
+                id:h
+                hint_text:"Enter liquid height (%)"
+        Button:
+            text: "Calculate"
+            on_press: root.sphere(root.ids.x.text, root.ids.y.text, root.ids.h.text, root.ids.D.text)
+        GridLayout:
+            cols:3
+            Label:
+                id: SphereVolume
+                text: ""
+            Label:
+                id: SphereTotalVolume
+                text: ""
+            Label:
+                id: SphereRemainingVolume
+                text: ""
+
+
+
+<RootWidget>:
+    MainScreen:
+        name: "main_screen"
+    PressureHeadScreen:
+        name: "pressure_head_screen"
+    HorizontalVolumeScreen:
+        name: "horizontal_volume_screen"
+    VerticalVolumeScreen:
+        name: "vertical_volume_screen"
+    SphereVolumeScreen:
+        name: "sphere_volume_screen"
